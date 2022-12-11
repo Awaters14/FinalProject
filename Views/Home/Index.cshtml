@@ -1,0 +1,20 @@
+﻿@model List<Response>@{ViewBag.Title = "My Respones";}<!DOCTYPE html><html><head>    <meta name="viewport" content="width=device-width" />    <title>Home Page</title>    <style>
+        body {
+            padding: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: navy;
+        }
+
+        label {
+            display: inline-block;
+            width: 10em;
+            padding-right: 1em;
+        }
+
+        div {
+            margin-bottom: .5em;
+        }    </style></head><body>    <h1>Reponses</h1>    <a asp-controller="Response" asp-action="Add">Add New Response</a> <table class="table table-bordered table-striped">        <thead>            <tr>                <th>Name</th>                <th>Problem</th>                <th>Address</th>                <th>State</th>                <th>ZipCode</th>                <th>Priority</th>                <th></th>            </tr>        </thead>        <tbody>            @foreach (var response in Model)            {            <tr>                <td>@response.name</td>                <td>@response.problem</td>                <td>@response.address</td>                <td>@response.state</td>                <td>@response.zipcode</td>                <td>@response.priority.priorityValue</td>                <td>                    <a asp-controller="Response" asp-action="Edit" asp-route-id="@response.ResponseId">Edit</a>                    <a asp-controller="Response" asp-action="Delete" asp-route-id="@response.ResponseId">Delete</a>                </td>            </tr>            }        </tbody>    </table></body></html>
